@@ -17,3 +17,21 @@ void Deck::InitCards() {
 		std::cout << "" << std::endl;
 	}
 }
+
+void Deck::PrintDeck() {
+	for (int i = 0; i < _deckSize; i++) {
+		Cards[i].print();
+	}
+}
+
+void Deck::Shuffle() {
+	Card temp;
+	int randomIndex = 0;
+
+	for (int i = 0; i < _deckSize; i++) {
+		randomIndex = rand() % _deckSize;
+		temp = Cards[i];
+		Cards[i] = Cards[randomIndex];
+		Cards[randomIndex] = temp;
+	}
+}

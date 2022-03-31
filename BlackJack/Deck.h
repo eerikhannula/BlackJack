@@ -5,11 +5,15 @@
 
 class Deck
 {
-	Card Cards[52];
+	const static int _deckSize = 52;
+	Card Cards[_deckSize];
 
 public:
 	Deck();
-
 	void InitCards();
+
+	void Shuffle();
+
+	void PrintDeck();
 };
 

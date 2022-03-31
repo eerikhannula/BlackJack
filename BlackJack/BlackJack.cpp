@@ -11,6 +11,10 @@ int main()
 
     Deck d = Deck();
 
+    d.PrintDeck();
 
+    d.Shuffle();
+
+    d.PrintDeck();
 }
 

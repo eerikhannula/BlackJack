@@ -90,3 +90,7 @@ string Card::getNameString() {
 	case (CardNames)12: return "KING";
 	}
 }
+
+void Card::print() {
+	std::cout << getNameString() << "\tof\t" << getSuitString() << std::endl;
+}

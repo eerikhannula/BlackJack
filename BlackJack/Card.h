@@ -24,5 +24,6 @@ public:
 	char getSymbol();
 	string getNameString();
 	string getSuitString();
+	void print();
 };
 
