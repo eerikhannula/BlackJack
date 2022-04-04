@@ -142,6 +142,7 @@
     <ClCompile Include="BlackJack.cpp" />
     <ClCompile Include="Card.cpp" />
     <ClCompile Include="Deck.cpp" />
+    <ClCompile Include="Table.cpp" />
     <ClCompile Include="Wallet.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -149,6 +150,7 @@
     <ClInclude Include="CardNames.h" />
     <ClInclude Include="Deck.h" />
     <ClInclude Include="Suits.h" />
+    <ClInclude Include="Table.h" />
     <ClInclude Include="Wallet.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

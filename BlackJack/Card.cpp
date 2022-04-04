@@ -92,5 +92,5 @@ string Card::getNameString() {
 }
 
 void Card::print() {
-	std::cout << getNameString() << "\tof\t" << getSuitString() << std::endl;
+	std::cout << "|" << getNameString() << " " << getSymbol() << "|" << std::flush;
 }

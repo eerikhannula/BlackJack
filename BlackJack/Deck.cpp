@@ -12,10 +12,14 @@ void Deck::InitCards() {
 			Card c = Card((Suits)i, (CardNames)j);
 			int index = i * 13 + j;
 			Cards[index] = c;
-			std::cout << c.getNameString() << "\tof\t" << c.getSuitString() << "\tat index of\t" << index << std::endl;
+			//std::cout << c.getNameString() << "\tof\t" << c.getSuitString() << "\tat index of\t" << index << std::endl;
 		}
-		std::cout << "" << std::endl;
+		//std::cout << "" << std::endl;
 	}
+}
+
+Card Deck::Pick(int index) {
+	return Cards[index];
 }
 
 void Deck::PrintDeck() {
@@ -27,7 +31,7 @@ void Deck::PrintDeck() {
 void Deck::Shuffle() {
 	Card temp;
 	int randomIndex = 0;
-
+	srand((unsigned int)time(NULL));
 	for (int i = 0; i < _deckSize; i++) {
 		randomIndex = rand() % _deckSize;
 		temp = Cards[i];

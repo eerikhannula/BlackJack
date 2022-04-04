@@ -2,19 +2,15 @@
 //
 
 #include <iostream>
-#include "Deck.h"
+#include "Table.h"
+
 
 using std::string;
 
+
 int main()
 {
-
-    Deck d = Deck();
-
-    d.PrintDeck();
-
-    d.Shuffle();
-
-    d.PrintDeck();
+	Table table = Table(50);
 }
+
 

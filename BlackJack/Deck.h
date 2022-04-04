@@ -12,6 +12,8 @@ public:
 	Deck();
 	void InitCards();
 
+	Card Pick(int index);
+
 	void Shuffle();
 
 	void PrintDeck();
