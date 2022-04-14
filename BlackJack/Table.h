@@ -2,6 +2,8 @@
 #include "Wallet.h"
 #include "Deck.h"
 #include "vector"
+#include <thread>
+#include <chrono>
 
 class Table
 {
@@ -28,5 +30,7 @@ public:
 	void Print(string text);
 	void Print(int number);
 	void PrintHands();
+
+	void ResetHands();
 };
 

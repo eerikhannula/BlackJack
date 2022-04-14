@@ -37,6 +37,7 @@ void Table::Start() {
 }
 
 void Table::NewRound() {
+    ResetHands();
     _wallet.PrintBalance();
 
     _deck.Shuffle();
@@ -76,8 +77,19 @@ void Table::NewRound() {
     }
 
     while (true) {
-        if (_houseScore > 17 || _playerScore >= 21) {
-            AddCard(_houseHand, _deckIndex);
+        if (_playerScore < 21) 
+        {
+            if (_houseScore < 17 && _houseScore < _playerScore) {
+                Print("*Dealer HITS*");
+                AddCard(_houseHand, _deckIndex);
+                PrintHands();
+                std::this_thread::sleep_for(std::chrono::milliseconds(2000));
+            }
+            else {
+                break;
+            }
+        
+
         }
         else {
             break;
@@ -92,9 +104,19 @@ void Table::NewRound() {
         Print("You win!");
         _wallet.AddBalance(bet * 2);
     }
+    else if (_houseScore > 21) {
+        Print("You win!");
+        _wallet.AddBalance(bet * 2);
+    } 
+    else if (_playerScore == _houseScore) {
+        Print("It's a tie.");
+        _wallet.AddBalance(bet);
+    }
     else {
         Print("Better luck next time :(");
     }
+    _wallet.PrintBalance();
+    
     
 }
 
@@ -135,15 +157,33 @@ void Table::Print(int number) {
     std::cout << number << std::endl;
 }
 
+void Table::ResetHands() {
+    _playerHand.clear();
+    _houseHand.clear();
+}
+
 void Table::PrintHands() {
 
     _houseScore = 0;
     _playerScore = 0;
-
+    std::cout << "=================================" << std::endl;
     std::cout << "Dealer's hand:" << std::flush;
     for (Card card : _houseHand) {
         card.print();
-        _houseScore += card.getValue();
+        if (card.getName() == (CardNames)0)
+        {
+            if (_houseScore <= 10) {
+                _houseScore += 11;
+            }
+            else {
+                _houseScore += 1;
+
+            }
+        }
+        else {
+            _houseScore += card.getValue();
+
+        }
     }
     Print(_houseScore);
     Print("");
@@ -151,10 +191,23 @@ void Table::PrintHands() {
     std::cout << "Player's hand:" << std::flush;
     for (Card card : _playerHand) {
         card.print();
-        _playerScore += card.getValue();
+        if (card.getName() == (CardNames)0)
+        {
+            if (_playerScore <= 10) {
+                _playerScore += 11;
+            }
+            else {
+                _playerScore += 1;
+
+            }
+        }
+        else {
+            _playerScore += card.getValue();
+
+        }
 
     }
     Print(_playerScore);
-    Print("");
+    std::cout << "=================================" << std::endl;
 
 }
